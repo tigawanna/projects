@@ -9,7 +9,7 @@ import { useAuthUser } from "@react-query-firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
 import { Login } from "./components/auth/Login";
 import { ProtectedRoute } from "./components/auth/PrivateRoutes";
-import { Projects } from "./components/Projects/Project";
+import { Projects } from "./components/Projects/Projects";
 import { OneProject } from "./components/Projects/OneProject";
 
 function App() {
@@ -21,12 +21,13 @@ function App() {
   }
 
   return (
-    <div className="h-screen w-screen overflow-x-hidden ">
+    <div className="h-screen w-screen ">
       <BrowserRouter>
         <div className="fixed top-[0px] right-1 w-full z-30">
           <Toolbar user={user} />
         </div>
-        <div className="w-full h-full mt-16 ">
+
+        <div className="w-full  h-[100%] mt-20 flex-center">
           <Routes>
             <Route
               path="/"

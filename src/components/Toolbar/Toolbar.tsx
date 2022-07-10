@@ -3,11 +3,12 @@ import { GrHome } from "react-icons/gr";
 import { IconContext } from "react-icons/lib";
 import { Link} from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
-import { useAuthSignOut} from '@react-query-firebase/auth';
+
 import { auth } from '../../firebase/firebaseConfig';
 import { User } from 'firebase/auth';
-import { useQueryClient } from 'react-query';
 
+import { useQueryClient } from 'react-query';
+import { useAuthSignOut} from '@react-query-firebase/auth';
 interface ToolbarProps {
 user?:User|null
 }
@@ -17,7 +18,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({user}) => {
 const queryClient = useQueryClient()   
 const mutation = useAuthSignOut(auth,{
    onSuccess: () => {  queryClient.invalidateQueries('user')  },
-   });
+});
 
 
 const userImg =user?.photoURL;

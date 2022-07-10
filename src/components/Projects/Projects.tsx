@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { ProjectsForm } from './ProjectForm';
 import { db } from '../../firebase/firebaseConfig';
-import { collection, query, orderBy } from "firebase/firestore";
+import { collection, query, orderBy,limit } from "firebase/firestore";
 import { useFirestoreQueryData } from '@react-query-firebase/firestore';
 import { tyme } from './projectUtil';
 import { Projectitems } from './ProjectListItems';
@@ -35,8 +35,8 @@ interface ProjectsProps {
 user?:User|null
 }
 
-const ProjectsRef = query( collection(db, "projects"),orderBy("timestamp","desc")
-    // limit(10),
+const ProjectsRef = query( collection(db, "projects"),orderBy("timestamp","desc"),
+    limit(5),
     // where("state", "==", "active")
   
   );
@@ -55,25 +55,35 @@ return <div className='h-full w-full flex justify-center items-center'>Loading..
 }
 
 const tings =dataQuery.data
-return (
-<div className="min-h-screen p-1 w-full flex flex-col justify-center items-center">
 
+
+return (
+<div className="h-full p-1 flex-col-center w-full " >
+<div className="max-h-[90%] p-1 w-full overflow-y-scroll" >
   <button 
   className='fixed md:top-3 p-1 top-[8%] right-[5%] md:right-[50%] z-50 border-2 
   rounded hover:border-slate-50 border-slate-500 md:p-1 text-white 
   bg-slate-900 md:bg-slate-500'
+
   onClick={()=>setOpen(!open)}>{open?"close":"add Project"}</button>
   {open?<ProjectsForm open={open} setOpen={setOpen} user={user}/>:null}
-
-   <div className="h-full w-[90%] md:w-[70%] flex flex-col justify-center items-center">
+  
+   <div className="flex-col-center p-3 w-full">
+  
   {
-     tings?.map((item)=>{
+     tings?.map((item,index)=>{
      const tems=item as ListProjectItem
       return(
-          <Projectitems key={item.timestamp} Project={tems} id={item.id} user={user}/>
+        <div 
+        key={index}
+        className='w-[100%] md:w-[70%] m-1 '>
+       <Projectitems key={item.timestamp} Project={tems} id={item.id} user={user}/> 
+       </div>
+
       )
      }) 
   }
+   </div>
    </div>
         </div>
             );

@@ -1,12 +1,14 @@
 import React from "react";
 import { DatePickerComp } from "./DatePicker";
-import { ListProjectItem } from "./Project";
+import { ListProjectItem } from "./Projects";
 import { dynColor, toTyme } from "./projectUtil";
 import { item } from "./OneProject";
 import { useState } from "react";
 import { useFirestoreDocumentMutation } from "@react-query-firebase/firestore";
 import { doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
+import { appendtoCache } from "../../utils/utils";
+import { useQueryClient } from 'react-query';
 
 interface DetailsListProps {
   id?: string;
@@ -60,7 +62,15 @@ export const DetailsListItem: React.FC<DetailsListProps> = ({
 
   //@ts-ignore
   const ref = doc(db, "projects", id);
-  const mutation = useFirestoreDocumentMutation(ref, { merge: true });
+
+  const queryClient = useQueryClient() 
+
+  const mutation = useFirestoreDocumentMutation(ref, { merge: true },{
+    onMutate:(data)=>{
+      console.log("data on mutate",data)
+      appendtoCache(queryClient,data,["projects"],"append")
+    }
+  });
 
   const saveChange = (field: string) => {
     let item = {

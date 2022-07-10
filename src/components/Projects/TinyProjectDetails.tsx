@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListProjectItem } from './Project';
+import { ListProjectItem } from './Projects';
 
 import { toTyme } from './projectUtil';
 import { User } from 'firebase/auth';

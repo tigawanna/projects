@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { ListProjectItem } from "./Project";
+import { ListProjectItem } from "./Projects";
 import { DetailsListItem } from "./ProjectListItemDetails";
 import { FaRegEdit, FaSave, FaRegWindowClose } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
@@ -10,6 +10,8 @@ import { useFirestoreDocumentMutation } from "@react-query-firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { doc, serverTimestamp } from "firebase/firestore";
 import { User } from 'firebase/auth';
+import { appendtoCache } from "../../utils/utils";
+import { useQueryClient } from 'react-query';
 
 interface OneProjectProps {
 user?:User|null
@@ -68,9 +70,15 @@ const { state } = useLocation();
     const { value } = e.target;
     setInput({ ...input, [e.target.id]: value });
   };
-
+  const queryClient = useQueryClient() 
   const ref = doc(db, "projects", id);
-  const mutation = useFirestoreDocumentMutation(ref, { merge: true });
+
+  const mutation = useFirestoreDocumentMutation(ref, { merge: true },{
+    onMutate:(data)=>{
+      console.log("data on mutate",data)
+      appendtoCache(queryClient,data,["projects"],"edit")
+    }
+  });
   const updateProject = () => {
     const item = {
       id,
@@ -87,6 +95,7 @@ const { state } = useLocation();
       },
     };
     mutation.mutate(item);
+    console.log("data on mutate",item)
     setTheme(dynColor(input.status))
     setEditing(false);
   };
@@ -94,8 +103,8 @@ const { state } = useLocation();
   return (
     <div
       style={{ borderColor: theme, borderWidth: "2px", borderRadius: "5px" }}
-      className="w-full  min-h-screen flex flex-col md:flex-row 
-      items-center md:justify-center bg-slate-300 scroll-mt-[200px]"
+      className="w-full  h-fit flex flex-col md:flex-row 
+      items-center md:justify-center bg-slate-300 scroll-mt-16"
     >
       <IconContext.Provider value={{ size: "30px" }}>
         <div className="fixed top-[11%] right-[3%] text-black md:right-[50%] md:top-3 z-30">

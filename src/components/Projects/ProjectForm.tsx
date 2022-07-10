@@ -48,30 +48,33 @@ export const ProjectsForm: React.FC<ProjectsFormProps> = ({ open, setOpen,user }
   
   const id = uniqid();
   const ProjectRef = doc(db, "projects", id);
+  
   const mutationProject = useFirestoreDocumentMutation(
     ProjectRef,
     { merge: true },
     {
       onMutate: async (newProject) => {
         // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
+
         await queryClient.cancelQueries("projects");
         // Snapshot the previous value
         const previousTodos = queryClient.getQueryData("projects");
         // Optimistically update to the new value
+        console.log("previuos   === ",newProject,previousTodos)
         //@ts-ignore
         queryClient.setQueryData("projects", (old) => [...old, newProject]);
         // Return a context object with the snapshotted value
         return { previousTodos };
       },
       // If the mutation fails, use the context returned from onMutate to roll back
-      onError: (err, newTodo, context) => {
-        //@ts-ignore
-        queryClient.setQueryData("projects", context.previousTodos);
-      },
-      // Always refetch after error or success:
-      onSettled: () => {
-        queryClient.invalidateQueries("projects");
-      },
+      // onError: (err, newTodo, context) => {
+      //   //@ts-ignore
+      //   queryClient.setQueryData("projects", context.previousTodos);
+      // },
+      // // Always refetch after error or success:
+      // onSettled: () => {
+      //   queryClient.invalidateQueries("projects");
+      // },
     }
   );
 
@@ -80,6 +83,7 @@ export const ProjectsForm: React.FC<ProjectsFormProps> = ({ open, setOpen,user }
   const closeCal = () => {
     setCalOpen(false);
   };
+  
   const handleChange = (e: any) => {
     const { value } = e.target;
     setInput({

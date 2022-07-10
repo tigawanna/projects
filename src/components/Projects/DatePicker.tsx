@@ -1,9 +1,8 @@
 import React from 'react';
 import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import "./picker.css"
-
+import dayjs from 'dayjs'
 interface DatePickerProps {
 selected:Date|undefined,
 setSelected: React.Dispatch<React.SetStateAction<Date | undefined>>,
@@ -31,7 +30,7 @@ export const DatePickerComp: React.FC<DatePickerProps> = ({selected,setSelected,
 
         let footer = <p>Please pick a day.</p>;
         if (selected) {
-          footer = <p className='text-sm'>Deadline {format(selected, 'PP')}, which is :{deadline()} hrs away</p>;
+          footer = <p className='text-sm'>Deadline Date  {dayjs().format('DD/MM/YYYY')} is :{deadline()} hrs away</p>;
         }
         return (
       <div className=" w-fit h-fit max-h-[95%] p-1 bg-black flex flex-col-reverse justify-center items-center text-white ">
