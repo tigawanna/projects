@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/project-mangaer/static/css/main.da3745ee.css",
-    "main.js": "/project-mangaer/static/js/main.aede2472.js",
-    "static/js/787.28cb0dcd.chunk.js": "/project-mangaer/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/project-mangaer/index.html",
-    "main.da3745ee.css.map": "/project-mangaer/static/css/main.da3745ee.css.map",
-    "main.aede2472.js.map": "/project-mangaer/static/js/main.aede2472.js.map",
-    "787.28cb0dcd.chunk.js.map": "/project-mangaer/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/projects/static/css/main.da3745ee.css",
+    "main.js": "/projects/static/js/main.ac1b1320.js",
+    "static/js/787.ae0246fb.chunk.js": "/projects/static/js/787.ae0246fb.chunk.js",
+    "index.html": "/projects/index.html",
+    "main.da3745ee.css.map": "/projects/static/css/main.da3745ee.css.map",
+    "main.ac1b1320.js.map": "/projects/static/js/main.ac1b1320.js.map",
+    "787.ae0246fb.chunk.js.map": "/projects/static/js/787.ae0246fb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.da3745ee.css",
-    "static/js/main.aede2472.js"
+    "static/js/main.ac1b1320.js"
   ]
 }
