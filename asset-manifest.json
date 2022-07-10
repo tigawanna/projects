@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/project-mangaer/static/css/main.da3745ee.css",
+    "main.js": "/project-mangaer/static/js/main.aede2472.js",
+    "static/js/787.28cb0dcd.chunk.js": "/project-mangaer/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/project-mangaer/index.html",
+    "main.da3745ee.css.map": "/project-mangaer/static/css/main.da3745ee.css.map",
+    "main.aede2472.js.map": "/project-mangaer/static/js/main.aede2472.js.map",
+    "787.28cb0dcd.chunk.js.map": "/project-mangaer/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da3745ee.css",
+    "static/js/main.aede2472.js"
+  ]
+}
