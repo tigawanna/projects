@@ -3,9 +3,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 import { getAuth} from "firebase/auth";
 
-import { connectAuthEmulator } from "firebase/auth";
-import {connectFirestoreEmulator} from "firebase/firestore"
-import { connectFunctionsEmulator } from "firebase/functions";
+// import { connectAuthEmulator } from "firebase/auth";
+// import {connectFirestoreEmulator} from "firebase/firestore"
+// import { connectFunctionsEmulator } from "firebase/functions";
 
 import { getFunctions} from "firebase/functions";
 import { getApp } from "firebase/app";
@@ -29,9 +29,9 @@ export const db = getFirestore();
 export const auth = getAuth(app)
 export const functions = getFunctions(getApp());
 
-connectFunctionsEmulator(functions, "localhost", 5001);
-connectFirestoreEmulator(db, '192.168.43.238', 8080);
-connectAuthEmulator(auth, "http://192.168.43.238:9099");
+// connectFunctionsEmulator(functions, "localhost", 5001);
+// connectFirestoreEmulator(db, '192.168.43.238', 8080);
+// connectAuthEmulator(auth, "http://192.168.43.238:9099");
 
 
 // connectFirestoreEmulator(db, 'localhost', 8080);

@@ -1,6 +1,7 @@
 {
-  "name": "my-app",
+  "name": "projects",
   "version": "0.1.0",
+  "homepage": "https://tigawanna.github.io/projects",
   "private": true,
   "dependencies": {
     "@react-query-firebase/auth": "^0.3.4",
@@ -40,7 +41,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

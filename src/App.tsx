@@ -21,13 +21,13 @@ function App() {
   }
 
   return (
-    <div className="h-screen w-screen ">
+    <div className="h-screen w-screen flex flex-col justify-between overflow-x-hidden">
       <BrowserRouter>
         <div className="fixed top-[0px] right-1 w-full z-30">
           <Toolbar user={user} />
         </div>
 
-        <div className="w-full  h-[100%] mt-20 flex-center">
+        <div className="w-full   mt-16 flex-center ">
           <Routes>
             <Route
               path="/"
@@ -47,7 +47,7 @@ function App() {
             />
 
             <Route
-              path="/project"
+              path="/projects"
               element={
                 <ProtectedRoute user={user}>
                   <Projects user={user}/>

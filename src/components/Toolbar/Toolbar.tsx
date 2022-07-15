@@ -31,7 +31,7 @@ return (
      <Link to="/"><GrHome /></Link>
      </div>
      <div className='m-1 w-full p-3 bg-slate-600 flex-center'>
-     <Link to="/project">Project</Link>
+     <Link to="/projects">Project</Link>
      </div>
      <div className='m-1 w-fit p-3 bg-slate-700 flex-center'>
       {!user?<FaUserCircle />

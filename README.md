@@ -3,7 +3,7 @@
 ## `Brief descrption`
 ### Simple app to manage team proects and track their progress
 
-made with 
+made with with
 - ### React with create-react-app
 
 - ### Tailwindcss for styling
@@ -11,6 +11,7 @@ made with
 - ### react-query for state management and api calls
 - ### Firebase for tha backend 
 
+### [live demo](https://tigawanna.github.io/projects/)
 
 `Getting started`
 

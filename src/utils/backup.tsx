@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { ListProjectItem } from "./Projects";
@@ -103,16 +104,19 @@ const { state } = useLocation();
   return (
     <div
       style={{ borderColor: theme, borderWidth: "2px", borderRadius: "5px" }}
-      className="w-full min-h-fit  flex flex-col items-center overflow-y-scroll "
+      className="w-full  min-h-full flex flex-col md:flex-row 
+      items-center  bg-red-300 overflow-y-scroll"
     >
       <IconContext.Provider value={{ size: "30px" }}>
         <div className="fixed top-[11%] right-[3%] text-black md:right-[50%] md:top-3 z-30">
-        <FaRegEdit onClick={() => setEditing(!editing)} />
+          <FaRegEdit onClick={() => setEditing(!editing)} />
         </div>
 
-        <div className=" min-h-[85vh] h-[90vh] flex w-full flex-col items-center justify-between">
-
-        <div className=" h-[90%]  w-[95%] lg:w-[70%]  bg-slate-200 m-5">
+        <div className="flex flex-col p-2 min-h-fit w-full  md:h-[95%] items-center   
+        bg-slate-300 overflow-y-scroll">
+          
+          <div className=" min-h-[50%]  w-[95%] lg:w-[50%]  bg-slate-200 ">
+            
             <div className=" flex w-full justify-between">
               {addedby ? (
                 <div className="flex mx-2 justify-center items-center">
@@ -136,7 +140,7 @@ const { state } = useLocation();
                 //@ts-ignore
                 onChange={(e) => handleChange(e)}
                 value={input.title}
-                className="border-black border-2 m-2 p-2 w-[95%] "
+                className="border-black border-2 m-2 p-2 w-[90%] "
               />
             ) : (
               <div className="text-3xl m-2 font-bold  md:p-2">
@@ -151,8 +155,8 @@ const { state } = useLocation();
                 //@ts-ignore
                 onChange={(e) => handleChange(e)}
                 value={input.desc}
-                className="border-black border-2 m-2  p-4 w-[95%] rounded-sm
-                overflow-y-scroll min-h-[200px] md:min-h-[200px] h-[70%]"
+                className="border-black border-2 m-2  p-4 w-[90%]
+                overflow-y-scroll min-h-[200px] md:min-h-[200px] "
               />
             ) : (
               <div className="text-base m-2 overflow-y-scroll md:py-4 p-2 font-bold h-[70%]">
@@ -163,28 +167,45 @@ const { state } = useLocation();
             {mutation.isError && <p>{mutation.error.message}</p>}
           </div>
 
-   
-          <div style={{ borderColor: theme, borderWidth: "3px",borderRadius: "5px",}}
-          className="m-2   w-[95%] lg:w-[70%] flex flex-col bg-slate-300 ">
-          <DetailsListItem
-            from={"oneProject"}
-            id={id}
-            Project={Project}
-            editing={editing}
-            input={input}
-            setInput={setInput}
-            selected={selected}
-            setSelected={setSelected}
-            calOpen={calOpen}
-            setCalOpen={setCalOpen}
-            handleChange={handleChange}
-            theme={theme}
-            setTheme={setTheme}
-          />
-        </div>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <div
+            style={{
+              borderColor: theme,
+              borderWidth: "3px",
+              borderRadius: "5px",
+            }}
+            className="m-2   w-[95%] lg:w-[50%] flex flex-col bg-slate-300"
+          >
+            <DetailsListItem
+              from={"oneProject"}
+              id={id}
+              Project={Project}
+              editing={editing}
+              input={input}
+              setInput={setInput}
+              selected={selected}
+              setSelected={setSelected}
+              calOpen={calOpen}
+              setCalOpen={setCalOpen}
+              handleChange={handleChange}
+              theme={theme}
+              setTheme={setTheme}
+            />
+          </div>
+
           {editing ? (
-            <div className=" fixed bottom-[3%] right-[5%] text-black  z-30 bg-slate-600   p-1 rounded-sm">
+            <div className=" fixed bottom-[3%] right-[5%] text-black  z-30 bg-slate-400   p-3">
               <FaSave onClick={() => updateProject()} className="mx-2" />
               <FaRegWindowClose
                 onClick={() => setEditing(!editing)}
@@ -192,7 +213,7 @@ const { state } = useLocation();
               />
             </div>
           ) : null}
-
+        </div>
       </IconContext.Provider>
     </div>
   );
