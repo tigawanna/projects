@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(14, 13, 9) rgb(58, 47, 17);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(252, 201, 99);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(97, 95, 92);
+  border-radius: 20px;
+}
+
+
+
 .flex-center{
 @apply flex justify-center items-center
 }

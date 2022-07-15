@@ -30,7 +30,7 @@ export interface item {
 export const OneProject: React.FC<OneProjectProps> = ({user}) => {
 const { state } = useLocation();
 
-  //console.log("arrived with state  == ",state)
+  // console.log("arrived with state  == ",state)
   //@ts-ignore
   const Project = state.Project as ListProjectItem;
   //@ts-ignore
@@ -75,7 +75,7 @@ const { state } = useLocation();
 
   const mutation = useFirestoreDocumentMutation(ref, { merge: true },{
     onMutate:(data)=>{
-      console.log("data on mutate",data)
+      // console.log("data on mutate",data)
       appendtoCache(queryClient,data,["projects"],"edit")
     }
   });
@@ -95,6 +95,7 @@ const { state } = useLocation();
       },
     };
     mutation.mutate(item);
+
     console.log("data on mutate",item)
     setTheme(dynColor(input.status))
     setEditing(false);

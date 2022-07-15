@@ -12,7 +12,8 @@ setOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export const DatePickerComp: React.FC<DatePickerProps> = ({selected,setSelected,open,setOpen}) => {
-
+  
+  console.log("date editing items ==== ",selected)
   const today=new Date()  
   const currenttime= today.getTime()
   const selectedMs=selected?.getTime() as number

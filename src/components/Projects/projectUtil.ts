@@ -27,16 +27,21 @@ if(status==="done"){
 
 
 export const toTyme =(time?:tyme)=>{
-  if(time){
+ //@ts-ignore
+ if(!time){
+    return dayjs(new Date()).format("DD/MM/YYYY")
+  } 
+  if((time as tyme)?.seconds){
     const ty= new Date(
         //@ts-ignore
-      time.seconds * 1000 + time.nanoseconds / 1000000
-    
-    );
+      time.seconds * 1000 + time.nanoseconds / 1000000);
+    // console.log("was a firebase timestamp",time)
     return dayjs(ty).format("DD/MM/YYYY")
  }  
+//  console.log("regular date",time)
+ //@ts-ignore
+return dayjs(time).format("DD/MM/YYYY")
 
-  return dayjs(new Date()).format("DD/MM/YYYY")
  
 }
 

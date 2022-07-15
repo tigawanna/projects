@@ -98,7 +98,7 @@ export const ProjectsForm: React.FC<ProjectsFormProps> = ({ open, setOpen,user }
       return false;
     }
     if (input.desc === "") {
-      setError({ name: "desc", message: "please add a bief desciption" });
+      setError({ name: "desc", message: "please add a brief desciption" });
       return false;
     }
 

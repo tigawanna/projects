@@ -12,9 +12,11 @@ export const Home: React.FC<HomeProps> = ({user}) => {
 
 
 return (
- <div className='w-full h-full  bg-slate-400 flex-center  '> 
+ <div className='w-full min-h-[90vh]  bg-slate-400 flex-col-center  overflow-x-hidden'> 
 
- <div className="min-h-fit h-[80%] flex-col md:flex-row center-flex bg-slate-700 p-5 w-[95%] overflow-y-hidden">
+ <div className="min-h-fit h-full  flex-col md:flex-row justify-center bg-slate-700 p-5 w-[95%] 
+ overflow-y-hidden">
+  
  <div className="w-full h-fit flex-col center-flex md:flex-center bg-slate-500">
  <div className='w-full flex-center text-slate-100 text-xl md:text-4xl font-bold'> 
  Welcome 
@@ -29,7 +31,7 @@ return (
 </div>
 
 
- <div className="flex-col-center text-slate-200  font-medium w-full p-5 m-2 h-[90%] overflow-y-scroll">
+ <div className=" text-slate-200 flex flex-col items-center justify-betweem font-medium w-full p-5 m-2 md:h-[50%] overflow-y-scroll">
    <p className='h-full'> Welcome, This is the demo of the project app 
     made with create-react-app ,tailwindcss , react-query and firebase
 
@@ -46,19 +48,24 @@ return (
    </p>
 
  
-   <div className='flex flex-col'>
-   <div className='capitalize font-bold twxt-xl'>color highlight for project status</div>
+   <div className='flex flex-col-center h-[40%] '>
+   <div className='capitalize font-bold m-2 p-1 bg-slate-900 text-sm md:text-xl
+    text-purple-200'>color highlight for project status</div>
+   
+   
    <div className='flex flex-wrap'>
 
-   <div className='p-5 text-3xl font-bold m-1 rounded-md'style={{backgroundColor:'#e30403'}}>pending</div>
+   <div className='p-1  text-sm md:text-xl font-bold m-1 rounded-md shadow-white shadow-sm'
+   style={{backgroundColor:'#e30403'}}>pending</div>
+  
+  <div className='p-1  text-sm md:text-xl font-bold m-1 rounded-md shadow-white shadow-sm' 
+   style={{backgroundColor:'#99C5FD',color:'#000'}}>approved</div>
 
-   <div 
-   style={{backgroundColor:'#93C5FD',color:'#000'}}
-   className='p-5 text-3xl font-bold m-1 rounded-md' 
-   >approved</div>
-   <div className='p-5 text-3xl font-bold m-1 rounded-md ' 
+   <div className='p-1 text-sm md:text-xl font-bold m-1 rounded-md shadow-white shadow-sm' 
    style={{background:'#34D399' ,color:'#000'}}>funded</div>
-    <div className='p-5 text-3xl font-bold m-1 rounded-md' style={{backgroundColor:'#4C1D95'}}>done</div>
+
+    <div className='p-1  text-sm md:text-xl font-bold m-1 rounded-md shadow-white shadow-sm' 
+    style={{backgroundColor:'#4C1D95'}}>done</div>
 
    </div>
    
